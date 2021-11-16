@@ -1,0 +1,62 @@
+---
+title: "Proyecto Final"
+author: "Adrian Villa"
+date: "16/11/2021"
+output: html_document
+---
+
+
+### Test de "Totem"
+
+Este proyecto consiste en un pequeno examen de 11 preguntas, cada inciso tiene un valor determinado y el resultado total arrojara un "totem" o animal diferente. 
+
+Los valores de las respuestas son: 
+
+A=1; B=2, C=3, D=4
+
+Los rangos de resultados posibles son: 
+
+0-11 Nutria
+12-14 Agula
+15-18 Lobo
+19-20 Perro
+21-24 Tigre
+25-32 Caballo
+33-42 Oso
+
+Los valores fueron fijados de forma arbitraria. 
+
+#### Explicacion del RScript
+
+Las preguntas se encuentran en el archivo "Test.csv", cada una, seguida de sus respuestas posibles. 
+**Nota: Es mucho mÃ¡s rÃ¡pido y eficiente tener todo en un solo repositorio usando el tabulador para obtener estos archivos en lugar de pegar la ruta. 
+
+```
+totem <- function (Test){
+  total <- 0
+  
+  pregunta1 <- test [1,1:5]
+  print (pregunta1)
+  respuesta1 <- readline (prompt = "Indica el inciso en minÃºscula: ")
+  if (pregunta1 [1] == test [1,1] & respuesta1 == "a"){total <- total+1
+  }else if (pregunta1 [1] == test [1,1] & respuesta1 == "b"){total <- total+2
+  }else if (pregunta1 [1] == test [1,1] & respuesta1 == "c"){total <- total+3
+  }else if (pregunta1 [1] == test [1,1] & respuesta1 == "d"){total <- total+4
+  }else{ print ("FÃ­jate bien en los incisos, ese no estÃ¡")}
+```
+
+Cada parte de las siguientes preguntas es escencialmente lo mismo, por lo que solo detallare la primer parte. 
+
+El objeto "totem" es en donde se va a recopilar toda la informacion. El total, es el puntaje inicial, en este caso 0, la "pregunta1", corresponde, obviamente, a la primer pregunta del test, en lugar de escribir textualmente cada pregunta, se toma el renglon y columna para mostrar tanto la pregunta como las opciones, la consola leera el mensaje "Indica el inciso en minuscula: " y permitira seleccionar un inciso (a,b,c y d), como se indico anteriormente, cada respuesta tiene un valor asignado que se le sumara al "total", asi con todas las preguntas. 
+
+```
+res <- if (total >= 0 & total <= 11){print("Tu tÃ³tem es una nutria")
+  }else if (total >= 12 & total <= 14){print("Tu tÃ³tem es un Ã¡guila")
+  }else if (total >= 15 & total <= 18){print("Tu tÃ³tem es un lobo")
+  }else if (total >= 19 & total <= 20){print("Tu tÃ³tem es un perro")
+  }else if (total >= 21 & total <= 24){print("Tu tÃ³tem es un tigre")
+  }else if (total >= 25 & total <= 32){print("Tu tÃ³tem es un caballo")
+  }else{print("Tu tÃ³tem es un oso")}
+  }
+```
+Para el resultado final, usando if, se fijo que, dependiendo de los valores obtenidos, mayores o iguales a x, dira "Tu totem es un(a) [animal]"
